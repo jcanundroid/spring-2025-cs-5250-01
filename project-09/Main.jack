@@ -1,0 +1,58 @@
+class Main {
+	function void main() {
+		var boolean done;
+		var int k;
+		var int temp;
+		var int ballX;
+		var int ballY;
+		var int ballR;
+		var int ballDX;
+		var int ballDY;
+
+		do Output.printString("Welcome to Ball!");
+		do Output.println();
+		do Output.printString("Press any key to start!");
+		do Output.println();
+
+		let k = Keyboard.readChar();
+
+		let done = false;
+
+		let ballX = 10;
+		let ballY = 10;
+		let ballR = 10;
+
+		let ballDX = 1;
+		let ballDY = 1;
+
+		do Screen.clearScreen();
+
+		while (done = false) {
+			let ballX = ballX + ballDX;
+			let ballY = ballY + ballDY;
+
+			let temp = 512 - ballR - 1;
+
+			if (ballX > temp) {
+				let ballX = temp;
+				let ballDX = -1; }
+			if (ballX < ballR) {
+				let ballX = ballR;
+				let ballDX = 1; }
+
+			let temp = 256 - ballR - 1;
+
+			if (ballY > temp) {
+				let ballY = temp;
+				let ballDY = -1; }
+			if (ballY < ballR) {
+				let ballY = ballR;
+				let ballDY = 1; }
+
+			do Screen.drawCircle(ballX, ballY, ballR);
+			do Sys.wait(10);
+		}
+
+		return;
+	}
+}
